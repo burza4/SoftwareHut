@@ -11,19 +11,17 @@ const App = () => {
   const handleNumberChange = (newNumber:number) => {
     console.log(newNumber)
   }
-  const liczbaMniejszaOdZera = (liczba:number) => {
-    if(liczba<0){
-      return (<div> liczba jest wieksza od 0</div>);
-    }
-  }
+
+  
   return (
     <div className="App">
       <CustomHeader>
-        <Counter onNumberChange={handleNumberChange}/>
-        {
-          changedNumber >0 && (<div> liczba jest wieksza od 0</div>)
-        }
-        {liczbaMniejszaOdZera(changedNumber)}
+        <Counter initialNumber={0} onNumberChange={handleNumberChange}/>
+        {/* {
+          changedNumber >10 && (<div> liczba jest wieksza od 10</div>)
+        } */}
+
+        {/* {liczbaMniejszaOdZera(changedNumber)} */}
       </CustomHeader>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import ChangeButton from './ChangeButton';
 import { addNumber } from './CustomHeader';
 
 interface CounterProps {
@@ -8,7 +9,7 @@ interface CounterProps {
 
 const Counter: React.FC<CounterProps> = ({initialNumber,onNumberChange}) => {
     const [counterNumber,setCounterNumber] = React.useState(initialNumber || 0);
-    
+
     const obj = {a: 1,b: 2};
     const {a,b} = obj;
     
@@ -25,11 +26,32 @@ const Counter: React.FC<CounterProps> = ({initialNumber,onNumberChange}) => {
         setCounterNumber(number);
         onNumberChange && onNumberChange(number);
     }
+    const resetNumber = () =>{
+        setCounterNumber(initialNumber || 0);
+        onNumberChange && onNumberChange(initialNumber || 0);
+    }
+
+    const ifNumber = (_number:number)=>{
+        if(_number>15)
+        {
+            return (<div> Liczba przekroczona</div>);
+        }
+        if(_number>10){
+            return (<div> liczba jest wieksza od 10</div>);
+        }  
+        if(_number<-10){
+            return (<div> liczba jest mniejsza od -10</div>);
+        }
+    }
     return (
         <div>
-            <button onClick={addNumber}>+</button>
+            <ChangeButton Change={addNumber}>+</ChangeButton>
             {counterNumber}
-            <button onClick={decreaseNumber}>-</button>
+            <ChangeButton Change={decreaseNumber}>-</ChangeButton>
+            <ChangeButton Change={resetNumber}>RESET</ChangeButton>
+            {ifNumber(counterNumber)}
+
+
         </div>
     );
 }
