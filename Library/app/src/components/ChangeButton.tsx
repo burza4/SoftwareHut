@@ -4,6 +4,7 @@ interface ButtonProps {
 }
 
 const ChangeButton:React.FC<ButtonProps> = ({Change,children}) => {
+  
     return (
       <div>
           <button onClick ={Change}>{children}</button>
