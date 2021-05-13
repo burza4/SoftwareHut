@@ -21,7 +21,7 @@ const BooksList = () =>{
     return(
         <div>
             <NavPanel />
-            <div>This is bookslist page</div>
+            <h1>This is bookslist page</h1>
             <div className={classes.list}>
             <Tile Nr= '0' />
             <Tile Nr= '1' />

@@ -1,18 +1,14 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import HP from '../images/HP.jpg';
-import H from '../images/Hobbit.jpg';
-import L from '../images/L.jpg';
 import { title } from 'node:process';
 import { Opacity } from '@material-ui/icons';
 import styled from 'styled-components';
 import { useHistory } from 'react-router';
+import bookDB from '../bookDB';
 
 interface TieProps {
     Nr: string;
 }
-
-
 
 const useStyles = makeStyles({
 
@@ -42,11 +38,7 @@ const useStyles = makeStyles({
     
     
 });
-const db = {
-    title : ['Harry Potter','Hobbit','Lsnienie'],
-    author : ['J.K. Rowling','J.R.R. Tolkien','Stephen King'],
-     img: [HP, H,L],
-}
+
 
 const Tile :React.FC<TieProps> = ({Nr,children})=> {
 
@@ -55,11 +47,11 @@ const Tile :React.FC<TieProps> = ({Nr,children})=> {
     return (
       <div className= { classes.tile} onClick={() => history.push(`/book/${Nr}`)}>
           <img className= { classes.cover}
-            src= {db.img[parseInt(Nr)]}
+            src= {bookDB.books[parseInt(Nr)].img}
             alt= 'zdjecie'
       />
-      <h2>{db.title[parseInt(Nr)]}</h2>
-      <h3>{db.author[parseInt(Nr)]}</h3>
+      <h2>{bookDB.books[parseInt(Nr)].title}</h2>
+      <h3>{bookDB.books[parseInt(Nr)].author}</h3>
       </div>
     );
   };

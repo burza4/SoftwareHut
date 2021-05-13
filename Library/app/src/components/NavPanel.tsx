@@ -39,9 +39,9 @@ const NavPanel = () => {
                         <li>{redirectTo('/', 'Home')}</li>
                         <li>{redirectTo('/book/1', 'Book')}</li>
                         <li>{redirectTo('/booksList', 'BooksList')}</li>
-                        <li>{redirectTo('/reservation', 'Reservation')}</li>
+                        <li>{redirectTo('/booksRank', 'BooksRank')}</li>
                     </ul>
-                    <ChangeButton Change={() => history.push('/reservation')} > xDD</ChangeButton>
+                    <ChangeButton Change={() => history.push('/booksList')} > xDD</ChangeButton>
                 </div>
             </Drawer>
         </div>
