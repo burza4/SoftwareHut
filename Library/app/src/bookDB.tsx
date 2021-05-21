@@ -3,7 +3,7 @@ import HP from './images/HP.jpg';
 import H from './images/Hobbit.jpg';
 import L from './images/L.jpg';
 
-const bookDB = {
+let bookDB = {
 
     books: [
         {

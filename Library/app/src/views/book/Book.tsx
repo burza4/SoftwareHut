@@ -5,9 +5,15 @@ import {makeStyles} from '@material-ui/core/styles';
 import bookDB from '../../bookDB';
 import Description from '../../components/Description';
 import Comments from '../../components/Comments';
+import CommentForm from '../../components/CommentForm';
+import data from '../../data/data.json'
+
 
 interface BookRouteParams {
     id: string;
+}
+interface Database {
+    db: object;
 }
 const useStyles = makeStyles({
 
@@ -28,6 +34,12 @@ const useStyles = makeStyles({
      }
 });
 
+
+
+
+
+
+
 const Book = () =>{
     const classes = useStyles();
     const { id } = useParams<BookRouteParams>();
@@ -46,7 +58,9 @@ const Book = () =>{
                       </div>
                 </div>
                 <div>
-                <Comments Nr = {id} />
+                <CommentForm nr = {id} db = {data.books[parseInt(id)]}></CommentForm>
+                <Comments  Nr = {id} />
+                
                 </div>
             </div>
         </div>

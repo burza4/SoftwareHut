@@ -6,9 +6,23 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router';
 import bookDB from '../bookDB';
 
-interface TieProps {
-    Nr: string;
+interface TieProps2 {
+  db:  {
+    id: number;
+    title: string;
+    author: string;
+    img: string;
+    score: number;
+    comments: {
+        id: number;
+        user: string;
+        content: string;
+        time: string;
+    }[];
+  }
+  nr: string;
 }
+
 
 const useStyles = makeStyles({
     comment: {
@@ -38,21 +52,22 @@ const useStyles = makeStyles({
 });
 
 
-const Comment :React.FC<TieProps> = ({Nr})=> {
-
+const Comment :React.FC<TieProps2> = ({db,nr})=> {
+  
     const classes = useStyles();
     return (
-        
+
       <div className = {classes.comment}>
         <div className = {classes.user}> 
-            Użytkownik: {bookDB.books[parseInt(Nr)].comments[0].user}
+            Użytkownik: {db.comments[parseInt(nr)].user}
           </div>
           <div className = {classes.text}> 
-         {bookDB.books[parseInt(Nr)].comments[0].content}
+         {db.comments[parseInt(nr)].content}
         </div>
         <div className = {classes.date}> 
-         {bookDB.books[parseInt(Nr)].comments[0].time}
+         {db.comments[parseInt(nr)].time}
         </div>
+        
       </div>
       
     );
