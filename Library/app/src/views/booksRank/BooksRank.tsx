@@ -13,7 +13,9 @@ const useStyles = makeStyles({
     
 });
 const BooksRank = () =>{
-    let ranking = bookDB.books.map((x) => <li key ={x.id}> <RankPosition Nr = {x.id.toString()}/> </li> )
+    let books = bookDB.books.sort((a, b) => (a.score < b.score ? 1 : -1));
+    let i = 1;
+    let ranking = books.map((x) => <li key = {x.id}> <RankPosition position = {i++} Book = {x}/> </li>)
     const classes = useStyles();
     return(
         <div>

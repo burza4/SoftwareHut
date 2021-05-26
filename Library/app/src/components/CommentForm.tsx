@@ -27,7 +27,7 @@ const useStyles = makeStyles({
         borderRadius: '25px',
         padding: '10px',
         margin: '10px',
-        background: 'rgb(255,255,0,0.5)',
+        background: 'rgb(245, 234, 146)',
         border: '3px solid rgb(0,0,0,0.5)',
         display: 'flex',
         flexDirection: 'column',

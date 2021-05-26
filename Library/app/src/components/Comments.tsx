@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router';
 import bookDB from '../bookDB';
 import Comment from './Comment';
-import data from '../data/data.json'
 
 interface TieProps {
   Nr: string;
@@ -26,12 +25,6 @@ const useStyles = makeStyles({
   }
 });
 
-const AddComment = (name: string, desc: string, date: string) => {
-  var obj = data.books[0].comments;
-  var keys = Object.keys(obj);
-  var len = keys.length
-  data.books[0].comments = [{ "id": len, "user": name, "content": desc, "time": date }, ...data.books[0].comments]
-}
 
 const Comments: React.FC<TieProps> = ({ Nr, Comments }) => {
   let i = 0;

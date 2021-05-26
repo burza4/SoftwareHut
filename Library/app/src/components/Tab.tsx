@@ -8,11 +8,8 @@ import bookDB from '../bookDB';
 import Tile from './Tile';
 
 interface TieProps {
-    Nr: string;
     title: string;
 }
-
-
 
 const useStyles = makeStyles({
 
@@ -22,7 +19,7 @@ const useStyles = makeStyles({
         borderRadius: '25px',
         padding: '10px',
         margin: '15px',
-        background: 'rgb(255,255,0,0.5)',
+        background: 'rgb(245, 234, 146)',
         border: '3px solid rgb(0,0,0,0.5)',
         alignItems: 'center',
     },
@@ -30,7 +27,7 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        
+        justifyContent: 'center',
 
     },
     positon: {
@@ -47,23 +44,27 @@ const useStyles = makeStyles({
 
 const Tab: React.FC<TieProps> = ({ title }) => {
 
-
-
-
     const classes = useStyles();
-    let ranking = bookDB.books.map((x) => <div className={classes.positon} > <Tile Nr={x.id.toString()} /> </div>);
-
-    let list: any[] = [];
-
-    for (let i = 0; i < 3; i++) {
-        list = [...list, ranking[i]]
+    let books;
+    // This doesn't account for if names are the same between objects
+    if(title === "Hot"){
+        books = bookDB.books.sort((a, b) => (a.score < b.score ? 1 : -1));
     }
+    else if(title === "Trending"){
+        books = bookDB.books.sort((a, b) => (a.comments.length < b.comments.length ? 1 : -1));
+    }
+    else{
+        books = bookDB.books.sort((a, b) => (a.publicationDate < b.publicationDate ? 1 : -1));
+    }
+    bookDB.books.sort((a, b) => (a.id > b.id ? 1 : -1));
+    let ranking = books.map((x) => <div className={classes.positon} key={x.id} > <Tile Book={x} /> </div>);
     return (
 
         <div className={classes.tab}>
             <div className={classes.title}>{title}</div>
             <div className={classes.list}>
-                {list}
+                {ranking}
+
             </div>
 
         </div>

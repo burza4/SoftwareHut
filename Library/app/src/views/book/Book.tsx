@@ -6,7 +6,6 @@ import bookDB from '../../bookDB';
 import Description from '../../components/Description';
 import Comments from '../../components/Comments';
 import CommentForm from '../../components/CommentForm';
-import data from '../../data/data.json'
 
 
 interface BookRouteParams {
@@ -34,16 +33,10 @@ const useStyles = makeStyles({
      }
 });
 
-
-
-
-
-
-
 const Book = () =>{
     const classes = useStyles();
     const { id } = useParams<BookRouteParams>();
-    const [comments, setComments] = useState(data.books[parseInt(id)].comments);
+    const [comments, setComments] = useState(bookDB.books[parseInt(id)].comments);
     
     return(
         <div>

@@ -31,6 +31,7 @@ const Description :React.FC<TieProps> = ({Nr})=> {
       <div className = {classes.desc}>
          <h3 className = {classes.text}>Tytuł: {bookDB.books[parseInt(Nr)].title}</h3>
          <p className = {classes.text}>Autor: {bookDB.books[parseInt(Nr)].author}</p>
+         <p className = {classes.text}>Autor: {bookDB.books[parseInt(Nr)].publicationDate}</p>
          <p className = {classes.text}>Ocena: {bookDB.books[parseInt(Nr)].score} </p>
          <p className = {classes.text}>Opis:</p>
          <p className = {classes.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

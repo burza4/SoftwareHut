@@ -7,11 +7,23 @@ import { useHistory } from 'react-router';
 import bookDB from '../bookDB';
 
 interface TieProps {
-    Nr: string;
+    Book: {
+        id: number;
+        title: string;
+        author: string;
+        img: string;
+        score: number;
+        publicationDate: number,
+        comments: {
+            id: number;
+            user: string;
+            content: string;
+            time: string;
+        }[];
+    };   
 }
 
 const useStyles = makeStyles({
-
 
     tile: {
         width: '450px',
@@ -19,7 +31,7 @@ const useStyles = makeStyles({
         borderRadius: '25px',
         padding: '10px',
         margin: '10px',
-        background: 'rgb(255,255,0,0.5)',
+        background: 'rgb(243, 226, 96)',
         border: '3px solid rgb(0,0,0,0.5)',
         transition: 'all 0.5s',
         "&:hover": {
@@ -40,18 +52,18 @@ const useStyles = makeStyles({
 });
 
 
-const Tile :React.FC<TieProps> = ({Nr,children})=> {
+const Tile :React.FC<TieProps> = ({Book,children})=> {
 
     const history = useHistory();
     const classes = useStyles();
     return (
-      <div className= { classes.tile} onClick={() => history.push(`/book/${Nr}`)}>
+      <div className= { classes.tile} onClick={() => history.push(`/book/${Book.id}`)}>
           <img className= { classes.cover}
-            src= {bookDB.books[parseInt(Nr)].img}
+            src= {Book.img}
             alt= 'zdjecie'
       />
-      <h2>{bookDB.books[parseInt(Nr)].title}</h2>
-      <h3>{bookDB.books[parseInt(Nr)].author}</h3>
+      <h2>{Book.title}</h2>
+      <h3>{Book.author}</h3>
       </div>
     );
   };
