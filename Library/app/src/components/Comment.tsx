@@ -7,20 +7,13 @@ import { useHistory } from 'react-router';
 import bookDB from '../bookDB';
 
 interface TieProps2 {
-  db:  {
+ 
+  com: {
     id: number;
-    title: string;
-    author: string;
-    img: string;
-    score: number;
-    comments: {
-        id: number;
-        user: string;
-        content: string;
-        time: string;
-    }[];
-  }
-  nr: string;
+    user: string;
+    content: string;
+    time: string;
+};
 }
 
 
@@ -52,20 +45,20 @@ const useStyles = makeStyles({
 });
 
 
-const Comment :React.FC<TieProps2> = ({db,nr})=> {
+const Comment :React.FC<TieProps2> = ({com})=> {
   
     const classes = useStyles();
     return (
 
       <div className = {classes.comment}>
         <div className = {classes.user}> 
-            Użytkownik: {db.comments[parseInt(nr)].user}
+            Użytkownik: {com.user}
           </div>
           <div className = {classes.text}> 
-         {db.comments[parseInt(nr)].content}
+         {com.content}
         </div>
         <div className = {classes.date}> 
-         {db.comments[parseInt(nr)].time}
+         {com.time}
         </div>
         
       </div>

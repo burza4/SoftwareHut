@@ -5,22 +5,19 @@ import { Opacity } from '@material-ui/icons';
 import styled from 'styled-components';
 import { useHistory } from 'react-router';
 import bookDB from '../bookDB';
+import $ from 'jquery';
+
+type Comment ={
+    id: number;
+    user: string;
+    content: string;
+    time: string;
+}[];
 
 interface TieProps2 {
-    db: {
-        id: number;
-        title: string;
-        author: string;
-        img: string;
-        score: number;
-        comments: {
-            id: number;
-            user: string;
-            content: string;
-            time: string;
-        }[];
-    }
-    nr: string;
+
+    commQuanity: number;
+    handleAddComment: any,
 }
 
 
@@ -60,17 +57,12 @@ const useStyles = makeStyles({
 
 
 
-const CommentForm: React.FC<TieProps2> = ({ db, nr }) => {
+const CommentForm: React.FC<TieProps2> = ({ commQuanity,handleAddComment }) => {
 
-    const AddComment = (name:string,desc:string,date:string) => {
-        var obj = db.comments;
-        var keys = Object.keys(obj);
-        var len = keys.length
-        db.comments =  [ {"id":len,"user":name,"content":desc,"time":date},...db.comments]
-      }
 
     const fun = () => {
-        AddComment("annonymous","xD","teraz");
+        const newComment= {"id":commQuanity,"user":"Paweł Antończyk","content":$('textarea').val(),"time":Date().toLocaleString()};
+        handleAddComment((prevState:any) => [ newComment,...prevState])
     }
     const classes = useStyles();
     return (
@@ -79,10 +71,10 @@ const CommentForm: React.FC<TieProps2> = ({ db, nr }) => {
             <div className={classes.content}>
                 <form>
                     <label>
-                    <textarea  className={classes.tb}  name="name" />
+                    <textarea    className={classes.tb} name="textarea" />
                     </label>
                     <br></br>
-                    <button  onClick = {() =>fun()}  >Dodaj komentarz</button>
+                    <button type="button" onClick = {() =>fun()}  >Dodaj komentarz</button>
                 </form>
             </div>
         </div>

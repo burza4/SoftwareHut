@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router';
 import NavPanel from '../../components/NavPanel';
 import {makeStyles} from '@material-ui/core/styles';
@@ -43,6 +43,8 @@ const useStyles = makeStyles({
 const Book = () =>{
     const classes = useStyles();
     const { id } = useParams<BookRouteParams>();
+    const [comments, setComments] = useState(data.books[parseInt(id)].comments);
+    
     return(
         <div>
             <NavPanel />
@@ -58,8 +60,8 @@ const Book = () =>{
                       </div>
                 </div>
                 <div>
-                <CommentForm nr = {id} db = {data.books[parseInt(id)]}></CommentForm>
-                <Comments  Nr = {id} />
+                <CommentForm commQuanity = {comments.length} handleAddComment={setComments} ></CommentForm>
+                <Comments Comments={comments}  Nr = {id} />
                 
                 </div>
             </div>
