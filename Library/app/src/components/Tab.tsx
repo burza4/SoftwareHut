@@ -56,8 +56,9 @@ const Tab: React.FC<TieProps> = ({ title }) => {
     else{
         books = bookDB.books.sort((a, b) => (a.publicationDate < b.publicationDate ? 1 : -1));
     }
-    bookDB.books.sort((a, b) => (a.id > b.id ? 1 : -1));
+
     let ranking = books.map((x) => <div className={classes.positon} key={x.id} > <Tile Book={x} /> </div>);
+    bookDB.books.sort((a, b) => (a.id > b.id ? 1 : -1));
     return (
 
         <div className={classes.tab}>
