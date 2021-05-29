@@ -4,7 +4,6 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import {makeStyles} from '@material-ui/core/styles';
 import ChangeButton from './ChangeButton';
-import { Book } from '@material-ui/icons';
 import bookDB from '../bookDB';
 
 

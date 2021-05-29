@@ -14,7 +14,7 @@ let bookDB = {
             title: 'Harry Potter',
             author: 'J.K. Rowling',
             img: HP,
-            score: 8.5,
+            score: 1000,
             publicationDate: 1997,
             comments: [
                 {
@@ -47,6 +47,7 @@ let bookDB = {
                     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
                     time: '10-10-2020 15:34',
                 }
+
             ]
         },
         {

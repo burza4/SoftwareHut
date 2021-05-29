@@ -1,10 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import { title } from 'node:process';
-import { Opacity } from '@material-ui/icons';
-import styled from 'styled-components';
-import { useHistory } from 'react-router';
-import bookDB from '../bookDB';
+
 
 interface TieProps {
     position: number;

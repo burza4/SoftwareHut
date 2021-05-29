@@ -11,9 +11,7 @@ import CommentForm from '../../components/CommentForm';
 interface BookRouteParams {
     id: string;
 }
-interface Database {
-    db: object;
-}
+
 const useStyles = makeStyles({
 
     page: {
